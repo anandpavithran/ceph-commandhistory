@@ -1,0 +1,84 @@
+    1  cephadm shell ceph -s
+    2  top
+    3  cephadm shell ceph -s
+    4  less /var/log/messages 
+    5  cephadm shell ceph -s
+    6  less /var/log/messages 
+    7  exit
+    8  yum install cephadm
+    9  ifconfig 
+   10  yum install cephadm-ansible
+   11  cd /usr/share/cephadm-ansible/
+   12  ls
+   13  vim hosts
+   14  vim cephadm-preflight.yml 
+   15  ansible-playbook -i hosts cephadm-preflight.yml -e "ceph_origin="
+   16  cd
+   17  #cephadm bootstrap --mon-ip=172.25.250.12 --initial-dashboard-password=redhat --dashboard-password-noupdate --allow-fqdn-hostname --registry-url=registry.lab.example.com --registry-username=registry --registry-password=redhat
+   18  dig registry.lab.example.com
+   19  ssh root@172.25.250.17
+   20  cephadm bootstrap --mon-ip=172.25.250.12 --initial-dashboard-password=redhat --dashboard-password-noupdate --allow-fqdn-hostname --registry-url=registry.lab.example.com --registry-username=registry --registry-password=redhat
+   21  history > myhist.txt
+    1  cephadm shell ceph -s
+    2  top
+    3  cephadm shell ceph -s
+    4  less /var/log/messages 
+    5  cephadm shell ceph -s
+    6  less /var/log/messages 
+    7  exit
+    8  ceph status
+    9  ceph orch ls
+   10  podman ps
+   11  ceph orch ls
+   12  ceph stsatus
+   13  ceph status
+   14  ceph orch host add serverd.lab.example.com
+   15  ceph cephadm get-pub-key > ~/ceph.pub
+   16  #ssh-copy-id -f -i ~/ceph.pub root@serverd.lab.example.com
+   17  ceph orch host ls
+   18  ssh-copy-id -f -i ~/ceph.pub root@serverd.lab.example.com
+   19  ceph orch host add serverd.lab.example.com
+   20  ceph orch ls
+   21  ssh-copy-id -f -i ~/ceph.pub root@servere.lab.example.com
+   22  ceph orch host add servere.lab.example.com
+   23  ceph orch host ls
+   24  ceph orch ls
+   25  ceph status
+   26  fdisk -l
+   27  ceph orch daemon add osd  serverc.lab.example.com:/dev/vdb
+   28  ceph status
+   29  ceph orch ls
+   30  ceph orch daemon add osd  serverd.lab.example.com:/dev/vdb
+   31  ceph orch daemon add osd  servere.lab.example.com:/dev/vdb
+   32  ceph osd tree
+   33  ceph osd find 2
+   34  ssh root@servere
+   35  ceph status
+   36  ceph osd tree
+   37  ssh root@servere
+   38  vim osd.yaml
+   39  ceph osd status
+   40  ceph orch apply -i osd.yaml 
+   41  vim osd.yaml
+   42  ceph orch apply -i osd.yaml 
+   43  ceph orch ls
+   44  ceph osd status
+   45  ceph status
+   46  ceph orch host ls
+   47  ssh root@clienta
+   48  ceph orch host ls
+   49  ceph orch host add osd cleinta.lab.example.com
+   50  ceph orch host add clienta.lab.example.com
+   51  > ssh-copy-id -f -i ~/ceph.pub root@clienta.lab.example.com
+   52   ssh-copy-id -f -i ~/ceph.pub root@clienta.lab.example.com
+   53  ceph orch host add clienta.lab.example.com
+   54  ceph orch host ls
+   55  ceph orch host label  add clienta.lab.exmaple.com _admin
+   56  ceph orch host label  add clienta.lab.example.com _admin
+   57  ceph orch host ls
+   58  ssh root@clienta
+   59  ceph auth get client.admin
+   60  ceph auth get client.admin > ceph.client.admin.keyring
+   61  scp ceph.client.admin.keyring /etc/ceph/ceph.conf root@clienta:/etc/ceph/
+   62  ssh admin@clienta
+   63  history >> myhist.txt 
